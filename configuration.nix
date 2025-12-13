@@ -10,6 +10,11 @@
     ./hardware-configuration.nix
   ];
 
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.backupFileExtension = "backup";
+  home-manager.users.__USERNAME__ = import ./home.nix;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -18,12 +23,11 @@
 
   time.timeZone = "Australia/Perth";
 
-  i18n.defaultLocale = "en_US.UTF-8";
-
+  services.displayManager.ly.enable = true;
   services.xserver = {
     enable = true;
-    windowManager.qtile.enable = true;
   };
+  programs.niri.enable = true;
 
   users.users.__USERNAME__ = {
     isNormalUser = true;
@@ -32,21 +36,37 @@
     # ];
   };
 
-  program.firefox.enable = true;
+  programs.firefox.enable = true;
+  services.v2raya.enable = true;
 
   environment.systemPackages = with pkgs; [
+    alacritty
+    bluetui
+    btop
+    fastfetch
+    git
+    kitty
+    nautilus
+    neovim
+    peaclock
+    ranger
+    starship
+    tree
+    ttyper
+    uv
     vim
     wget
-    neovim
-    alacritty
-    git
     zellij
-    tree
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.departure-mono
+    nerd-fonts.jetbrains-mono
   ];
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-  system.stateVersion = "25.02";
+  system.stateVersion = "25.05";
 }
