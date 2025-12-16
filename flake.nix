@@ -24,15 +24,18 @@
     }:
     let
       system = "x86_64-linux";
+      username = "__USERNAME__";
+      hostname = "__SYSTEMNAME__";
     in
     {
-      nixosConfigurations.__SYSTEMNAME__ = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs username hostname;
+        };
         modules = [
-          ./configuration.nix
+          ./hosts/__SYSTEMNAME__/configuration.nix
           home-manager.nixosModules.home-manager
-          ./noctalia.nix
         ];
       };
     };

@@ -1,19 +1,11 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  home.username = "__USERNAME__";
-  home.homeDirectory = "/home/__USERNAME__";
-  home.stateVersion = "24.11";
-
-  programs.bash = {
-    enable = true;
-  };
-
   programs.alacritty = {
     enable = true;
     settings = {
       window = {
-        opacity = 0.90;
+        opacity = 0.75;
         decorations = "None";
       };
       font = {
@@ -47,8 +39,4 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-
-  ];
 }
