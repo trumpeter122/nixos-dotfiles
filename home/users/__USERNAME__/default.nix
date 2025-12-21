@@ -8,6 +8,7 @@
   imports = [
     ../../../modules/home/shells/zsh.nix
     ../../../modules/home/programs/alacritty.nix
+    ../../../modules/home/programs/niri.nix
     ../../../modules/home/packages.nix
   ];
 }
