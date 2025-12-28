@@ -13,6 +13,7 @@
     ../../modules/nixos/users.nix
     ../../modules/nixos/home-manager.nix
     ../../modules/nixos/noctalia.nix
+    ../../modules/nixos/stylix.nix
   ];
 
   networking.hostName = hostname;
